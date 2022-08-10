@@ -1,0 +1,11 @@
+.on {
+    margin: 3px;
+    background-color: rgb(62, 62, 62);
+    color: white;
+}
+
+.off {
+    margin: 3px;
+    background-color: white;
+    color: rgb(62, 62, 62);
+}

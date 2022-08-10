@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import ProjectList from './ProjectList'
-import Toolbar from './Toolbar'
+import React, { Component } from 'react';
+import ProjectList from './ProjectList';
+import Toolbar from './Toolbar';
 
 export default class Portfolio extends Component {
 
@@ -81,10 +81,11 @@ export default class Portfolio extends Component {
 
 
         return (
-            <>
-                <Toolbar filters={filters} onSelectFilter={this.onSelectFilter}></Toolbar>
+            <div className='Portfolio'>
+                <Toolbar filters={filters} onSelectFilter={this.onSelectFilter} selected={this.state.selected}></Toolbar>
                 <ProjectList item={item}></ProjectList>
-            </>
+
+            </div>
 
 
         )
