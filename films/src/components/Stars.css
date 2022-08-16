@@ -1,0 +1,10 @@
+.card-body-stars {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.card-body-stars>li {
+    list-style-type: none;
+}
