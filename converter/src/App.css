@@ -1,0 +1,28 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+
+
+.Background {
+  position: absolute;
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.InputColor {
+  height: 3rem;
+}
+
+.Result {
+  height: 3rem;
+}
