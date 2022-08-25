@@ -1,0 +1,128 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  width: 800px;
+}
+
+.Menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.MenuButton {
+  margin-right: 1rem;
+  color: rgb(76, 76, 255);
+}
+
+.NewsList {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+}
+
+.NewsMenu {
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+  color: rgb(87, 67, 237);
+}
+
+.newsMenuItem {
+  margin-left: 1rem;
+}
+
+.NewsItem {
+  text-decoration: none;
+}
+
+.Course {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+}
+
+.MainSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Yandex {
+  font-family: sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  font-stretch: ultra-condensed;
+  margin-right: 1rem;
+}
+
+.Yandex:first-letter {
+  color: red;
+}
+
+.MenuSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.InputBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.Input {
+  width: 35rem;
+  height: 1.7rem;
+  border: 2px solid rgb(251, 208, 55);
+}
+
+.SearchButton {
+  display: flex;
+  height: 1.7rem;
+  width: 5rem;
+  background-color: rgb(251, 208, 55);
+  border: 3px solid rgb(251, 208, 55);
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.Banner {
+  width: 600px;
+}
+
+.Banner img {
+  width: 100%;
+}
+
+.Widgets {
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+}
+
+.Widget {
+  margin-right: 1rem;
+  line-height: 0.5;
+}
+
+.TitleWid {
+  color: rgb(87, 87, 255);
+}
+
+.Weather {
+  font-size: 2rem;
+}
