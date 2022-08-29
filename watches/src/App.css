@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.ClockManager {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.Clocks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

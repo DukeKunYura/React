@@ -1,0 +1,20 @@
+.InputPanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 4rem;
+    margin: 1rem;
+    padding: 2rem;
+    background-color: rgb(175, 175, 175);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14pt;
+
+
+}
+
+.Name,
+.Zone,
+.AddBut {
+    height: 2rem;
+    margin: 0.5rem;
+}

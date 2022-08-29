@@ -1,0 +1,12 @@
+.Clock {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    height: 10rem;
+    width: 5rem;
+}
+
+.DelBut {
+    width: 5rem;
+    margin-top: 1.5rem
+}
