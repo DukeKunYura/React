@@ -13,8 +13,12 @@
 }
 
 .Name,
-.Zone,
-.AddBut {
+.Zone {
     height: 2rem;
+    margin: 0.5rem;
+}
+
+.AddBut {
+    height: 2.4rem;
     margin: 0.5rem;
 }

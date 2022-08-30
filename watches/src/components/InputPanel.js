@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import './InputPanel.css'
 
+/**
+ * Компонент отображает панель ввода и отправляет данные в менеджер
+ */
 export default function InputPanel(props) {
 
     const { handleAddClock } = props
 
     const [formState, setFormState] = useState({ name: "", zone: 0 })
+
+
 
     const handleChange = ({ target }) => {
         const name = target.name;
@@ -21,7 +26,7 @@ export default function InputPanel(props) {
             </div>
             <div className='inputZone'>
                 <label htmlFor='zone'>Временная зона</label>
-                <input className='Zone' id='zone' name='zone' value={formState.zone} onChange={handleChange}></input>
+                <input className='Zone' id='zone' name='zone' type="number" min="-12" max="14" value={formState.zone} onChange={handleChange}></input>
             </div>
             <button className='AddBut' onClick={() => { handleAddClock(formState.name, formState.zone) }}>Добавить</button>
         </div>
