@@ -3,6 +3,10 @@ import moment from 'moment';
 import 'moment-timezone';
 import './Clock.css'
 
+
+
+
+
 /**
  * Классовый компонент рендерит часы с учетом полученных в props данных
  */
@@ -44,3 +48,39 @@ export default class Clock extends Component {
         )
     }
 }
+
+
+//часы с кнопкой Stop в функциональном исполнении
+
+
+// import React, { useEffect, useState } from 'react';
+// import moment from 'moment';
+
+// export default function Clock() {
+//     const [currentTime, setCurrentTime] = useState(moment().format("H:mm:ss"));
+//     const [intervalId, setIntervalId] = useState(undefined);
+    
+
+
+//     useEffect(() => {
+//         const intervalId = setIntervalId(() => {
+//             setCurrentTime(moment().format("H:mm:ss"))
+//         }, 1000);
+//         setIntervalId(intervalId)
+
+//         return () => {clearInterval(intervalId)}
+//     }, [])
+
+//     const handlerPush = () => {
+//         clearInterval(intervalId)
+//     }
+
+
+//   return (
+//     <div>
+//         <div>{currentTime}</div>
+//         <button onClick={handlerPush}>Stop</button>
+//     </div>
+//   )
+// }
+
