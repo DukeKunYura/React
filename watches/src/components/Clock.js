@@ -25,7 +25,7 @@ export default class Clock extends Component {
         if (Math.sign(utc) === 1) { zone = `Etc/GMT` + -utc }
 
         this.clockIntervalId = setInterval(() => this.setState({
-            currentTime: moment().tz(zone).format("H:mm")
+            currentTime: moment().tz(zone).format("H:mm:ss")
         }), 1000)
         console.log(zone)
 
@@ -35,6 +35,9 @@ export default class Clock extends Component {
         clearInterval(this.clockIntervalId)
     }
 
+    handlerStop = () => {clearInterval(this.clockIntervalId)}
+
+
     render() {
 
         return (
@@ -42,6 +45,7 @@ export default class Clock extends Component {
                 <p>{this.props.props.name}</p>
                 <div>{this.state.currentTime}</div>
                 <button className='DelBut' onClick={() => { this.props.handleDeleteClock(this.props.props.id) }}>Удалить</button>
+                <button className='StopBut' onClick={this.handlerStop}>Стоп</button>
 
             </div>
 
