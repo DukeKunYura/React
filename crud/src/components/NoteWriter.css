@@ -1,0 +1,19 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ButtonSubmit {
+    height: 1.7rem;
+    width: 5rem;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(251, 208, 55);
+    border: 1px solid rgb(82, 82, 79);
+}
+
+.InputNote {
+    background-color: rgb(255, 239, 183);
+}
