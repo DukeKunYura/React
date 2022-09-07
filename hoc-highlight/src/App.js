@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
 import shortid from "shortid";
 
-function checkingPopularity(Component) {
+/**
+ *HOC оборачивает компонент в Popular или New 
+ */
+function checkingStatus(Component) {
   return class extends React.Component {
+
     render() {
-      return
-      <Component{...this.props} />;
+      if (this.props.views >= 1000) {
+        return (
+          <Popular>
+            <Component {...this.props} />
+          </Popular>
+        )
+      }
+      if (this.props.views < 100) {
+        return (
+          <New>
+            <Component {...this.props} />
+          </New>
+        )
+      }
+      else return <Component {...this.props} />
     }
   }
 };
+
+const CheckedVideo = checkingStatus(Video);
+const CheckedArticle = checkingStatus(Article);
 
 function New(props) {
   return (
@@ -51,12 +71,12 @@ function List(props) {
     switch (item.type) {
       case 'video':
         return (
-          <Video {...item} key={shortid.generate()} />
+          <CheckedVideo {...item} key={shortid.generate()} />
         );
 
       case 'article':
         return (
-          <Article {...item} key={shortid.generate()} />
+          <CheckedArticle {...item} key={shortid.generate()} />
         );
     }
   });
