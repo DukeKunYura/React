@@ -1,0 +1,9 @@
+.List {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.card {
+    width: 300px;
+}
