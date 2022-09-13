@@ -1,6 +1,10 @@
 import React from 'react';
-import useJsonFetch from "../hooks/useJsonFetch.js"
+import useJsonFetch from "../hooks/useJsonFetch.js";
 
+/**
+ * Компонент получает в props url, делает fetch запрос используя кастомный хук useJsonFetch
+ * и рендерит в строку результат запроса
+ */
 export default function HookUser(props) {
   const { url } = props
 
@@ -8,8 +12,7 @@ export default function HookUser(props) {
 
   return (
     <div>
-      {loading ? <progress /> : JSON.stringify(data)}
-      {error && error}
+      {loading ? <progress /> : JSON.stringify(data) + (error && error)}
     </div>
   )
 }
