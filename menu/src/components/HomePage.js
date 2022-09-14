@@ -1,5 +1,8 @@
 import React from 'react'
 
+/**
+ * Компонент рендерит контент "Гоночн​ое такси"
+ */
 export default function HomePage() {
     return (
         <article className="article">

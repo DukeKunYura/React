@@ -1,5 +1,8 @@
 import React from 'react'
 
+/**
+ * Компонент рендерит контент "Дрифт-такси"
+ */
 export default function DriftPage() {
     return (
         <article className="article">

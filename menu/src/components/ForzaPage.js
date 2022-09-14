@@ -1,5 +1,8 @@
 import React from 'react'
 
+/**
+ * Компонент рендерит контент "Forza Karting Sochi"
+ */
 export default function ForzaPage() {
     return (
         <article className="article">

@@ -1,5 +1,8 @@
 import React from 'react'
 
+/**
+ * Компонент рендерит контент "Гонка ​​​​​​Time Attack"
+ */
 export default function TimeAttackPage() {
     return (
         <article className="article">
