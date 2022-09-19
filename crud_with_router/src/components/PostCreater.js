@@ -28,11 +28,21 @@ export default function PostCreater() {
     const hendlerExit = () => { navigate("/") };
 
     return (
-        <div>
-            <form className='Form'>
-                <textarea className='InputPost' cols='40' rows='5' value={form} onChange={handlerChange} required></textarea>
-                <span onClick={hendlerExit}>Закрыть</span>
-                <span className='ButtonSubmit' onClick={handlerSubmit}>Опубликовать</span>
+        <div className="PostList">
+            <form className='Post'>
+                <textarea
+                    className='PostText'
+                    cols='40' rows='5'
+                    value={form}
+                    onChange={handlerChange}
+                    required="required">
+
+                </textarea>
+                <div className='PostMenu'>
+                    <span className='Button' onClick={hendlerExit}>Закрыть</span>
+                    <span className='Button' onClick={handlerSubmit}>Опубликовать</span>
+                </div>
+
             </form>
         </div>
     )

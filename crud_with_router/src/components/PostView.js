@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import sendRequest from '../functions/sendRequest.js';
+import moment from 'moment';
+import avatar from './img/181-800x600.jpg'
 
 /**
  * Компонет рендерит страницу с постом, при редактирование страницу редактирования
@@ -9,7 +11,6 @@ export default function PostView() {
     const [state, setState] = useState(null);
     const [editing, setEditing] = useState(false);
     const [form, setForm] = useState("");
-
     const params = useParams();
     const navigate = useNavigate();
 
@@ -65,27 +66,57 @@ export default function PostView() {
 
 
     return (
-        <div>
+        <div className='PostList'>
             {(state && params.id && !editing)
                 ?
-                <div>
-                    {state.content}
-                    <span onClick={hendlerExit}>Закрыть</span>
-                    <span onClick={() => hendlerDelete(params.id)}>Удалить</span>
-                    <span onClick={handlerEditing}>Редактировать</span>
+                <div className='Post'>
+                    <div className='Person'>
+                        <img className='Avatar' src={avatar} alt='avatar' />
+                        <p>
+                            Автор поста
+                        </p>
+                        <div className='DatePost'>
+                            Опубликовано: {moment(state.created).fromNow()}
+                        </div>
+
+                    </div>
+                    <div className='PostText'>
+                        <p>
+                            {state.content}
+                        </p>
+
+                    </div>
+                    <div className='PostMenu'>
+                        <span className='Button' onClick={hendlerExit}>Закрыть</span>
+                        <span className='Button' onClick={() => hendlerDelete(params.id)}>Удалить</span>
+                        <span className='Button' onClick={handlerEditing}>Редактировать</span>
+                    </div>
+
                 </div>
 
                 : (editing
                     ? <div>
-                        <form className='Form'>
-                            <textarea className='InputPost' cols='40' rows='5' value={form} onChange={handlerChange} required></textarea>
-                            <button className='ButtonSubmit' onClick={handlerSubmit}>Сохранить</button>
+                        <form className='Post'>
+                            <textarea
+                                className='PostText'
+                                cols='40'
+                                rows='5'
+                                value={form}
+                                onChange={handlerChange}
+                                required>
+
+                            </textarea>
+                            <div className='PostMenu'>
+                                <span
+                                    className='Button'
+                                    onClick={handlerSubmit}>Сохранить
+                                </span>
+                            </div>
+
                         </form>
 
                     </div>
-                    : <progress></progress>)}
-
-
+                    : <progress />)}
         </div>
     )
 }
