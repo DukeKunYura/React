@@ -1,0 +1,33 @@
+.InputPoint {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 600px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 3px;
+    box-shadow: rgb(182, 182, 182) 1px 1px 2px;
+    margin: 6px;
+    justify-content: space-around;
+}
+
+.InputPosition {
+    height: 20px;
+    width: 250px;
+}
+
+.InputPrice {
+    height: 20px;
+    width: 80px;
+}
+
+.AddButton {
+    height: 30px;
+    width: auto;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 8px;
+    background-color: rgb(245, 245, 245);
+    box-shadow: rgb(182, 182, 182) 1px 1px 2px;
+    border-radius: 3px;
+}
