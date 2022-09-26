@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeQuantity } from '../redux/starsSlice';
 import shortid from "shortid";
 
+/**
+ * Компонент сохраняет в глобальный стейт введенное в поле число (от 1 до 5)
+ * и отображает соответствующее число фактов из глобального стейта
+ */
 export default function StarWars() {
 
     const dispatch = useDispatch();
@@ -27,7 +31,7 @@ export default function StarWars() {
 
     return (
         <div>
-            <input type='number' max={5} min={1} value={state.quantity}
+            <input className='InputNumber' type='number' max={5} min={1} value={state.quantity}
                 onChange={(e) => {
                     dispatch(changeQuantity(e.target.value))
                 }} />

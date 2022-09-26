@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    list: []
+    list: [],
+    avatar: null
 
 };
 
@@ -11,7 +12,10 @@ export const masterSlice = createSlice({
     reducers: {
 
         addAvatar: (state, action) => {
-            state.list = [...state.list, action.payload]
+
+            if (state.avatar) { state.list = [state.avatar, ...state.list] };
+            state.avatar = action.payload;
+
         },
 
     },
