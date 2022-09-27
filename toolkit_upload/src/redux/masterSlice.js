@@ -19,9 +19,9 @@ export const masterSlice = createSlice({
         },
 
     },
-})
+});
 
 
-export const { addAvatar } = masterSlice.actions
+export const { addAvatar } = masterSlice.actions;
 
-export default masterSlice.reducer
+export default masterSlice.reducer;

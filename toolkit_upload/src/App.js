@@ -1,10 +1,10 @@
 import './App.css';
-import Main from './components/Main';
+import Uploader from './components/Uploader';
 
 function App() {
   return (
     <div className="App">
-      <Main></Main>
+      <Uploader />
     </div>
   );
 }

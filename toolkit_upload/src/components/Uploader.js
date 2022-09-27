@@ -1,36 +1,53 @@
-import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addAvatar } from '../redux/masterSlice'
+import { addAvatar } from '../redux/masterSlice';
+import shortid from "shortid";
+import './Uploader.css';
+import avatar from '../img/avatar.jpg';
 
+/**
+ * Компонент позволяет загрузить фото из дискового пространства, 
+ * url загруженных файлов хранит в глобальном стейте
+ */
 export default function Uploader() {
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state.master);
-    //const [avatars, setAvatars] = useState({});
 
     const handlerChangeAvatar = (e) => {
+
         e.preventDefault();
-        let link = window.URL.createObjectURL(e.target.files[0]);
-        dispatch(addAvatar(link));
-        // URL.revokeObjectURL(link)
+        dispatch(addAvatar(window.URL.createObjectURL(e.target.files[0])));
 
     }
 
 
     return (
-        <div>
+        <div className='Page'>
             <div className='AvatarPlace'>
-                {state.avatar ? <img className='Avatar' src={state.avatar}></img> : <div>нету пока</div>}
+                {state.avatar
+                    ? <img className='Avatar' src={state.avatar} alt='avatar' />
+                    : <img className='Avatar' src={avatar} alt='avatar' />}
+                <div className='Uploader'>
+                    <label
+                        className='UploadLabel'
+                        htmlFor="222">Upload</label>
+                    <input
+                        className='Upload'
+                        id="222" type="file"
+                        onChange={handlerChangeAvatar} />
+                </div>
             </div>
-            <div>
-                <label className='uploadLabel' htmlFor="222">Upload</label>
-                <input className='upload' id="222" type="file" onChange={handlerChangeAvatar}></input>
+            <div className='PrevAvatarPlace'>
+                <div className='TitlePrevAvatar'>Previous avatars</div>
+                {state.list[0] && state.list.map(item =>
+                    <img
+                        className='PrevAvatar'
+                        src={item}
+                        alt="avatar"
+                        key={shortid.generate()}></img>)}
             </div>
 
-            {state.list[0] ?
-                state.list.map(item => <img className='Avatar' src={item} alt="avatar"></img>)
 
-                : <progress />}
         </div>
     )
-}
+};
