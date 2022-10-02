@@ -33,6 +33,22 @@ section {
     opacity: 0;
 }
 
+/* added */
+.nav-item-active {
+    color: #ff0000;
+}
+
+.nav-item,
+.nav-item-active {
+    margin-left: 8px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+
+}
+
 /* Header */
 .header-controls-pics {
     display: flex;
