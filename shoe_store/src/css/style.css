@@ -34,7 +34,7 @@ section {
 }
 
 /* added */
-.nav-item-active {
+/* .nav-item-active {
     color: #ff0000;
 }
 
@@ -47,7 +47,7 @@ section {
     display: flex;
     align-items: center;
 
-}
+} */
 
 /* Header */
 .header-controls-pics {

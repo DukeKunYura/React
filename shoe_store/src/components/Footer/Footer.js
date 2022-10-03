@@ -1,13 +1,16 @@
-import React from 'react'
+import React from 'react';
 
+/**
+ * Компонент рендерит футер
+ */
 export default function Footer() {
     return (
         <footer className="container bg-light footer">
-            {/* <div className="row">
+            <div className="row">
                 <div className="col">
                     <section>
                         <h5>Информация</h5>
-                        <ul class="nav flex-column">
+                        <ul className="nav flex-column">
                             <li className="nav-item"><a href="/about.html" className="nav-link">О магазине</a></li>
                             <li className="nav-item"><a href="/catalog.html" className="nav-link">Каталог</a></li>
                             <li className="nav-item"><a href="/contacts.html" className="nav-link">Контакты</a></li>
@@ -44,7 +47,7 @@ export default function Footer() {
                         </div>
                     </section>
                 </div>
-            </div> */}
+            </div>
         </footer>
     )
 }

@@ -1,146 +1,149 @@
-import React from 'react'
+import React from 'react';
+import Banner from '../Banner/Banner';
+import sandals_myer from '../../img/products/sandals_myer.jpg';
+import sandals_keira from '../../img/products/sandals_keira.jpg';
+import superhero_sneakers from '../../img/products/superhero_sneakers.jpg';
 
+/**
+ * Компонент рендерит главную страницу магазина
+ */
 export default function MainPage() {
     return (
         <main className="container">
-            main
-            {/* <div class="row">
-                <div class="col">
-                    <div class="banner">
-                        <img src="./img/banner.jpg" class="img-fluid" alt="К весне готовы!" />
-                        <h2 class="banner-header">К весне готовы!</h2>
-                    </div>
-                    <section class="top-sales">
-                        <h2 class="text-center">Хиты продаж!</h2>
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="card">
-                                    <img src="./img/products/sandals_myer.jpg"
-                                        class="card-img-top img-fluid" alt="Босоножки 'MYER'" />
-                                    <div class="card-body">
-                                        <p class="card-text">Босоножки 'MYER'</p>
-                                        <p class="card-text">34 000 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+            <div className="row">
+                <div className="col">
+                    <Banner />
+                    <section className="top-sales">
+                        <h2 className="text-center">Хиты продаж!</h2>
+                        <div className="row">
+                            <div className="col-4">
+                                <div className="card">
+                                    <img src={sandals_myer}
+                                        className="card-img-top img-fluid" alt="Босоножки 'MYER'" />
+                                    <div className="card-body">
+                                        <p className="card-text">Босоножки 'MYER'</p>
+                                        <p className="card-text">34 000 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="card">
-                                    <img src="./img/products/sandals_keira.jpg"
-                                        class="card-img-top img-fluid" alt="Босоножки 'Keira'" />
-                                    <div class="card-body">
-                                        <p class="card-text">Босоножки 'Keira'</p>
-                                        <p class="card-text">7 600 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                            <div className="col-4">
+                                <div className="card">
+                                    <img src={sandals_keira}
+                                        className="card-img-top img-fluid" alt="Босоножки 'Keira'" />
+                                    <div className="card-body">
+                                        <p className="card-text">Босоножки 'Keira'</p>
+                                        <p className="card-text">7 600 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="card">
-                                    <img src="./img/products/superhero_sneakers.jpg"
-                                        class="card-img-top img-fluid" alt="Супергеройские кеды" />
-                                    <div class="card-body">
-                                        <p class="card-text">Супергеройские кеды</p>
-                                        <p class="card-text">1 400 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                            <div className="col-4">
+                                <div className="card">
+                                    <img src={superhero_sneakers}
+                                        className="card-img-top img-fluid" alt="Супергеройские кеды" />
+                                    <div className="card-body">
+                                        <p className="card-text">Супергеройские кеды</p>
+                                        <p className="card-text">1 400 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <section class="catalog">
-                        <h2 class="text-center">Каталог</h2>
-                        <ul class="catalog-categories nav justify-content-center">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Все</a>
+                    <section className="catalog">
+                        <h2 className="text-center">Каталог</h2>
+                        <ul className="catalog-categories nav justify-content-center">
+                            <li className="nav-item">
+                                <a className="nav-link active" href="a">Все</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Женская обувь</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="a">Женская обувь</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Мужская обувь</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="a">Мужская обувь</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Обувь унисекс</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="a">Обувь унисекс</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Детская обувь</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="a">Детская обувь</a>
                             </li>
                         </ul>
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="card catalog-item-card">
-                                    <img src="./img/products/sandals_myer.jpg"
-                                        class="card-img-top img-fluid" alt="Босоножки 'MYER'" />
-                                    <div class="card-body">
-                                        <p class="card-text">Босоножки 'MYER'</p>
-                                        <p class="card-text">34 000 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                        <div className="row">
+                            <div className="col-4">
+                                <div className="card catalog-item-card">
+                                    <img src={sandals_myer}
+                                        className="card-img-top img-fluid" alt="Босоножки 'MYER'" />
+                                    <div className="card-body">
+                                        <p className="card-text">Босоножки 'MYER'</p>
+                                        <p className="card-text">34 000 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="card catalog-item-card">
-                                    <img src="./img/products/sandals_keira.jpg"
-                                        class="card-img-top img-fluid" alt="Босоножки 'Keira'" />
-                                    <div class="card-body">
-                                        <p class="card-text">Босоножки 'Keira'</p>
-                                        <p class="card-text">7 600 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                            <div className="col-4">
+                                <div className="card catalog-item-card">
+                                    <img src={sandals_keira}
+                                        className="card-img-top img-fluid" alt="Босоножки 'Keira'" />
+                                    <div className="card-body">
+                                        <p className="card-text">Босоножки 'Keira'</p>
+                                        <p className="card-text">7 600 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="card catalog-item-card">
-                                    <img src="./img/products/superhero_sneakers.jpg"
-                                        class="card-img-top img-fluid" alt="Супергеройские кеды" />
-                                    <div class="card-body">
-                                        <p class="card-text">Супергеройские кеды</p>
-                                        <p class="card-text">1 400 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                            <div className="col-4">
+                                <div className="card catalog-item-card">
+                                    <img src={superhero_sneakers}
+                                        className="card-img-top img-fluid" alt="Супергеройские кеды" />
+                                    <div className="card-body">
+                                        <p className="card-text">Супергеройские кеды</p>
+                                        <p className="card-text">1 400 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="card catalog-item-card">
-                                    <img src="./img/products/sandals_myer.jpg"
-                                        class="card-img-top img-fluid" alt="Босоножки 'MYER'" />
-                                    <div class="card-body">
-                                        <p class="card-text">Босоножки 'MYER'</p>
-                                        <p class="card-text">34 000 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                            <div className="col-4">
+                                <div className="card catalog-item-card">
+                                    <img src={sandals_myer}
+                                        className="card-img-top img-fluid" alt="Босоножки 'MYER'" />
+                                    <div className="card-body">
+                                        <p className="card-text">Босоножки 'MYER'</p>
+                                        <p className="card-text">34 000 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="card catalog-item-card">
-                                    <img src="./img/products/sandals_keira.jpg"
-                                        class="card-img-top img-fluid" alt="Босоножки 'Keira'" />
-                                    <div class="card-body">
-                                        <p class="card-text">Босоножки 'Keira'</p>
-                                        <p class="card-text">7 600 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                            <div className="col-4">
+                                <div className="card catalog-item-card">
+                                    <img src={sandals_keira}
+                                        className="card-img-top img-fluid" alt="Босоножки 'Keira'" />
+                                    <div className="card-body">
+                                        <p className="card-text">Босоножки 'Keira'</p>
+                                        <p className="card-text">7 600 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="card catalog-item-card">
-                                    <img src="./img/products/superhero_sneakers.jpg"
-                                        class="card-img-top img-fluid" alt="Супергеройские кеды" />
-                                    <div class="card-body">
-                                        <p class="card-text">Супергеройские кеды</p>
-                                        <p class="card-text">1 400 руб.</p>
-                                        <a href="/products/1.html" class="btn btn-outline-primary">Заказать</a>
+                            <div className="col-4">
+                                <div className="card catalog-item-card">
+                                    <img src={superhero_sneakers}
+                                        className="card-img-top img-fluid" alt="Супергеройские кеды" />
+                                    <div className="card-body">
+                                        <p className="card-text">Супергеройские кеды</p>
+                                        <p className="card-text">1 400 руб.</p>
+                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-outline-primary">Загрузить ещё</button>
+                        <div className="text-center">
+                            <button className="btn btn-outline-primary">Загрузить ещё</button>
                         </div>
                     </section>
                 </div>
-            </div> */}
+            </div>
         </main>
     )
 }
