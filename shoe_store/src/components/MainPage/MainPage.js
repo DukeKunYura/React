@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner';
 import sandals_myer from '../../img/products/sandals_myer.jpg';
 import sandals_keira from '../../img/products/sandals_keira.jpg';
 import superhero_sneakers from '../../img/products/superhero_sneakers.jpg';
+import TopSales from '../TopSales/TopSales';
 
 /**
  * Компонент рендерит главную страницу магазина
@@ -13,8 +14,9 @@ export default function MainPage() {
             <div className="row">
                 <div className="col">
                     <Banner />
-                    <section className="top-sales">
-                        <h2 className="text-center">Хиты продаж!</h2>
+                    <TopSales />
+                    {/* <section className="top-sales">
+                        <h2 className="text-center"><TopSales /></h2>
                         <div className="row">
                             <div className="col-4">
                                 <div className="card">
@@ -50,7 +52,7 @@ export default function MainPage() {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> */}
                     <section className="catalog">
                         <h2 className="text-center">Каталог</h2>
                         <ul className="catalog-categories nav justify-content-center">
