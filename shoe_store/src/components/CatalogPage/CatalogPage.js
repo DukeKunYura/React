@@ -1,21 +1,17 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
+import Catalog from '../Catalog/Catalog';
 
 /**
  * Компонент рендерит страницу "Каталог"
  */
 export default function CatalogPage() {
     return (
-        <main className="container">
+        <main className="container" >
             <div className="row">
                 <div className="col">
                     <Banner />
-                    <section className="top-sales">
-                        <h2 className="text-center">Страница в разработке</h2>
-                        <p>
-                            Извините, страница не готова!
-                        </p>
-                    </section>
+                    <Catalog />
                 </div>
             </div>
         </main>
