@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import useAsync from '../../hooks/useAsync';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
 import DownloadMore from '../DownloadMore/DownloadMore';
+import { useSelector } from 'react-redux';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит каталог
  */
 export default function Catalog() {
+
+    const state = useSelector((state) => state.master);
 
     const [checked, setChecked] = useState("all");
 
@@ -14,11 +17,22 @@ export default function Catalog() {
 
     const handlerCheckCategories = (id) => {
         if (id !== "") {
-            setCategoriesUrl('http://localhost:7070/api/items?categoryId=' + id);
-            setChecked(id)
+            if (state.search !== "") {
+                setCategoriesUrl('http://localhost:7070/api/items?categoryId=' + id + '&q=' + state.search);
+                setChecked(id)
+            } else {
+                setCategoriesUrl('http://localhost:7070/api/items?categoryId=' + id);
+                setChecked(id)
+            }
         } else {
-            setCategoriesUrl('http://localhost:7070/api/items');
-            setChecked("all")
+            if (state.search !== "") {
+                setCategoriesUrl('http://localhost:7070/api/items?q=' + state.search);
+                setChecked("all")
+            } else {
+                setCategoriesUrl('http://localhost:7070/api/items');
+                setChecked("all")
+            }
+
         }
 
     };
@@ -40,6 +54,7 @@ export default function Catalog() {
             {status === "success"
                 ? <section className="catalog">
                     <h2 className="text-center">Каталог</h2>
+
                     <CatalogCategories checked={checked} handlerCheckCategories={handlerCheckCategories} />
                     <div className="row">
                         {value.map(value =>
@@ -55,7 +70,7 @@ export default function Catalog() {
                                 </div>
                             </div>)}
                     </div>
-                    <DownloadMore />
+                    <DownloadMore checked={checked} categoriesUrl={categoriesUrl} />
                 </section>
 
                 :
