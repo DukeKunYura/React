@@ -7,11 +7,11 @@ import { useSelector } from 'react-redux';
 /**
  * Компонент отправляет fetch-запрос и рендерит каталог
  */
-export default function Catalog() {
+export default function Catalog(props) {
 
     const state = useSelector((state) => state.master);
 
-    const [checked, setChecked] = useState("all");
+    const [checked, setChecked] = useState("");
 
     const [categoriesUrl, setCategoriesUrl] = useState('http://localhost:7070/api/items');
 
@@ -27,14 +27,12 @@ export default function Catalog() {
         } else {
             if (state.search !== "") {
                 setCategoriesUrl('http://localhost:7070/api/items?q=' + state.search);
-                setChecked("all")
+                setChecked("")
             } else {
                 setCategoriesUrl('http://localhost:7070/api/items');
-                setChecked("all")
+                setChecked("")
             }
-
         }
-
     };
 
     const { execute, status, value, error } = useAsync(
@@ -43,10 +41,18 @@ export default function Catalog() {
 
     error && console.log(error);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { execute() }, []);
+
+
+    // useEffect(() => {
+    //     handlerCheckCategories(checked);
+
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { execute() }, [categoriesUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { handlerCheckCategories(checked) }, [state.searchStart]);
 
 
     return (
@@ -54,7 +60,7 @@ export default function Catalog() {
             {status === "success"
                 ? <section className="catalog">
                     <h2 className="text-center">Каталог</h2>
-
+                    {props.children}
                     <CatalogCategories checked={checked} handlerCheckCategories={handlerCheckCategories} />
                     <div className="row">
                         {value.map(value =>

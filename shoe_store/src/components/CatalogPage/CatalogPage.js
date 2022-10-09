@@ -12,8 +12,9 @@ export default function CatalogPage() {
             <div className="row">
                 <div className="col">
                     <Banner />
-                    <Search />
-                    <Catalog />
+                    <Catalog>
+                        <Search />
+                    </Catalog>
                 </div>
             </div>
         </main>

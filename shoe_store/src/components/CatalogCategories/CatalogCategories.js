@@ -22,7 +22,7 @@ export default function CatalogCategories(props) {
             {status === "success" &&
                 <ul className="catalog-categories nav justify-content-center" id='linkCategories'>
                     <li className="nav-item">
-                        <a className={checked === "all" ? "nav-link active" : "nav-link"} href="#linkCategories"
+                        <a className={checked === "" ? "nav-link active" : "nav-link"} href="#linkCategories"
                             onClick={() => { handlerCheckCategories("") }}>Все</a>
                     </li>
                     {value.map(value =>

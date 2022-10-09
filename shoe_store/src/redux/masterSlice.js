@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    search: "uuu"
+    search: "",
+    searchStart: 0
+
 
 };
 
@@ -12,12 +14,15 @@ export const masterSlice = createSlice({
 
         setSearch: (state, action) => {
             state.search = action.payload
+        },
+        rerenderCatalog: (state, action) => {
+            state.searchStart = state.searchStart + action.payload
         }
 
     }
 })
 
 
-export const { setSearch } = masterSlice.actions
+export const { setSearch, rerenderCatalog } = masterSlice.actions
 
 export default masterSlice.reducer
