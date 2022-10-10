@@ -13,6 +13,7 @@ export default function Search() {
 
     const enterDown = (event) => {
         if (event.keyCode === 13) {
+            event.preventDefault();
             dispatch(rerenderCatalog(1))
         }
     };

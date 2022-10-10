@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
+import { useSelector } from 'react-redux';
 
 /**
  * Компонент отправляет fetch-запрос при нажатии кнопки 
@@ -8,12 +9,16 @@ import useAsync from '../../hooks/useAsync';
 export default function DownloadMore(props) {
 
     const { checked, categoriesUrl } = props;
+
+    const state = useSelector((state) => state.master);
+
     const [addedCards, setAddedCards] = useState([]);
     const [offsetCount, setOffsetCount] = useState(6);
     const [isActiveAdder, setIsActiveAdder] = useState(true);
 
     const { execute, status, value, error } = useAsync(
-        () => fetch(`${checked === "all" ? categoriesUrl + "?" : categoriesUrl + "&"}offset=${offsetCount}`)
+        () => fetch(`${checked === "" && state.search === ""
+            ? categoriesUrl + "?" : categoriesUrl + "&"}offset=${offsetCount}`)
             .then((res) => res.json()), false);
 
 

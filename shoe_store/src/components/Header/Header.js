@@ -1,11 +1,32 @@
 import React from 'react';
 import logo from '../../img/header-logo.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setclassHeaderSearh, setSearch } from '../../redux/masterSlice';
 
 /**
  * Компонент отвечает за навигационное меню
  */
 export default function Header() {
+
+    const state = useSelector((state) => state.master);
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    const handlerClickSearch = (e) => {
+        e.preventDefault();
+
+        if (state.search !== "") {
+            navigate("/catalog.html")
+        };
+
+        dispatch(setclassHeaderSearh());
+
+    };
+
+
     return (
         <header className="container">
             <div className="row">
@@ -31,15 +52,19 @@ export default function Header() {
                             </ul>
                             <div>
                                 <div className="header-controls-pics">
-                                    <div data-id="search-expander" className="header-controls-pic header-controls-search"></div>
+                                    <div data-id="search-expander" className="header-controls-pic header-controls-search"
+                                        onClick={(e) => { handlerClickSearch(e) }}></div>
                                     {/* <!-- Do programmatic navigation on click to /cart.html --> */}
                                     <div className="header-controls-pic header-controls-cart">
                                         <div className="header-controls-cart-full">1</div>
                                         <div className="header-controls-cart-menu"></div>
                                     </div>
                                 </div>
-                                <form data-id="search-form" className="header-controls-search-form form-inline invisible">
-                                    <input className="form-control" placeholder="Поиск" />
+                                <form data-id="search-form" className={state.classHeaderSearh}
+                                >
+                                    <input className="form-control" placeholder="Поиск"
+                                        value={state.search}
+                                        onChange={(e) => { dispatch(setSearch(e.target.value)) }} />
                                 </form>
                             </div>
                         </div>

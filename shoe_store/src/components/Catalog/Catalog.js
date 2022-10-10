@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import useAsync from '../../hooks/useAsync';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
 import DownloadMore from '../DownloadMore/DownloadMore';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSearch } from '../../redux/masterSlice';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит каталог
@@ -10,6 +11,8 @@ import { useSelector } from 'react-redux';
 export default function Catalog(props) {
 
     const state = useSelector((state) => state.master);
+
+    const dispatch = useDispatch();
 
     const [checked, setChecked] = useState("");
 
@@ -19,18 +22,18 @@ export default function Catalog(props) {
         if (id !== "") {
             if (state.search !== "") {
                 setCategoriesUrl('http://localhost:7070/api/items?categoryId=' + id + '&q=' + state.search);
-                setChecked(id)
+                setChecked(id);
             } else {
                 setCategoriesUrl('http://localhost:7070/api/items?categoryId=' + id);
-                setChecked(id)
+                setChecked(id);
             }
         } else {
             if (state.search !== "") {
                 setCategoriesUrl('http://localhost:7070/api/items?q=' + state.search);
-                setChecked("")
+                setChecked("");
             } else {
                 setCategoriesUrl('http://localhost:7070/api/items');
-                setChecked("")
+                setChecked("");
             }
         }
     };
@@ -41,18 +44,23 @@ export default function Catalog(props) {
 
     error && console.log(error);
 
+    useEffect(() => {
+        handlerCheckCategories(checked);
 
-
-    // useEffect(() => {
-    //     handlerCheckCategories(checked);
-
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { execute() }, [categoriesUrl]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { handlerCheckCategories(checked) }, [state.searchStart]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(setSearch(""));
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 
     return (
