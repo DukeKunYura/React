@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useAsync from '../../hooks/useAsync';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
 import DownloadMore from '../DownloadMore/DownloadMore';
-import { useSelector, useDispatch } from 'react-redux';
-import { setSearch } from '../../redux/masterSlice';
+import { useSelector } from 'react-redux';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит каталог
@@ -11,8 +10,6 @@ import { setSearch } from '../../redux/masterSlice';
 export default function Catalog(props) {
 
     const state = useSelector((state) => state.master);
-
-    const dispatch = useDispatch();
 
     const [checked, setChecked] = useState("");
 
@@ -51,16 +48,17 @@ export default function Catalog(props) {
     }, []);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { execute() }, [categoriesUrl]);
+    useEffect(() => { execute() }, [categoriesUrl, checked]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { handlerCheckCategories(checked) }, [state.searchStart]);
 
-    useEffect(() => {
-        return () => {
-            dispatch(setSearch(""));
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // useEffect(() => {
+    //     return () => {
+    //         dispatch(setSearch(""))
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
+
 
 
     return (

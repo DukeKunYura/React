@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useAsync from '../../hooks/useAsync';
-import { useState, useEffect } from 'react';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит "Хиты продаж"
  */
 export default function TopSales() {
-
-    const [mount, setMount] = useState(false)
 
     const { execute, status, value, error } = useAsync(
         () => fetch('http://localhost:7070/api/top-sales')
@@ -15,9 +12,8 @@ export default function TopSales() {
 
     error && console.log(error);
 
-
-    useEffect(() => { if (!mount) { setMount(true); execute() } }, [execute, mount]);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { execute() }, []);
 
     return (
         <>

@@ -7,6 +7,7 @@ import Search from '../Search/Search';
  * Компонент рендерит страницу "Каталог"
  */
 export default function CatalogPage() {
+
     return (
         <main className="container" >
             <div className="row">
