@@ -13,7 +13,7 @@ export default function Catalog(props) {
 
     const [checked, setChecked] = useState("");
 
-    const [categoriesUrl, setCategoriesUrl] = useState('http://localhost:7070/api/items');
+    const [categoriesUrl, setCategoriesUrl] = useState('http://localhost:7070/api/items1');
 
     const handlerCheckCategories = (id) => {
         if (id !== "") {
@@ -28,6 +28,7 @@ export default function Catalog(props) {
             if (state.search !== "") {
                 setCategoriesUrl('http://localhost:7070/api/items?q=' + state.search);
                 setChecked("");
+
             } else {
                 setCategoriesUrl('http://localhost:7070/api/items');
                 setChecked("");
@@ -41,25 +42,13 @@ export default function Catalog(props) {
 
     error && console.log(error);
 
-    useEffect(() => {
-        handlerCheckCategories(checked);
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { handlerCheckCategories(checked) }, []);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { execute() }, [categoriesUrl, checked]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { handlerCheckCategories(checked) }, [state.searchStart]);
-
-    // useEffect(() => {
-    //     return () => {
-    //         dispatch(setSearch(""))
-    //     }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
-
-
 
     return (
         <>

@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../img/header-logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setclassHeaderSearh, setSearch, rerenderCatalog } from '../../redux/masterSlice';
+import { setclassHeaderSearh, setSearch } from '../../redux/masterSlice';
 
 /**
  * Компонент отвечает за навигационное меню
@@ -19,11 +19,10 @@ export default function Header() {
         e.preventDefault();
 
         if (state.search !== "") {
-            navigate("/catalog.html")
+            navigate("/catalog.html");
         };
-
         dispatch(setclassHeaderSearh());
-        dispatch(rerenderCatalog(1))
+
 
     };
 
