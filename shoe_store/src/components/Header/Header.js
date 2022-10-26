@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../img/header-logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setclassHeaderSearh, setSearch } from '../../redux/masterSlice';
+import { setCheckedCategories, setClassHeaderSearch, setSearch } from '../../redux/masterSlice';
 
 /**
  * Компонент отвечает за навигационное меню
@@ -18,11 +18,9 @@ export default function Header() {
     const handlerClickSearch = (e) => {
         e.preventDefault();
 
-        if (state.search !== "") {
-            navigate("/catalog.html");
-        };
-        dispatch(setclassHeaderSearh());
-
+        if (state.search !== "") { navigate("/catalog.html") };
+        dispatch(setClassHeaderSearch());
+        dispatch(setCheckedCategories(state.checkedCategories));
 
     };
 
@@ -60,7 +58,7 @@ export default function Header() {
                                         <div className="header-controls-cart-menu"></div>
                                     </div>
                                 </div>
-                                <form data-id="search-form" className={state.classHeaderSearh}
+                                <form data-id="search-form" className={state.classHeaderSearch}
                                 >
                                     <input className="form-control" placeholder="Поиск"
                                         value={state.search}

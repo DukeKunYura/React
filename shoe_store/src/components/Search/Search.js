@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearch, rerenderCatalog } from '../../redux/masterSlice';
+import { setSearch, setCheckedCategories } from '../../redux/masterSlice';
 
 /**
  * Компонент отвечает за работу поиска
@@ -14,7 +14,7 @@ export default function Search() {
     const enterDown = (event) => {
         if (event.keyCode === 13) {
             event.preventDefault();
-            dispatch(rerenderCatalog(1))
+            dispatch(setCheckedCategories(state.checkedCategories));
         }
     };
 

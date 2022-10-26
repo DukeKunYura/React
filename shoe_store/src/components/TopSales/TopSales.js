@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
-import useAsync from '../../hooks/useAsync';
+import React from 'react';
+import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
+import sendRequest from '../../functions/sendRequest';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит "Хиты продаж"
  */
 export default function TopSales() {
 
-    const { execute, status, value, error } = useAsync(
-        () => fetch('http://localhost:7070/api/top-sales')
-            .then((res) => res.json()), false);
+    const { status, value, error } = useAsyncWithUrl(
+        sendRequest,
+        'http://localhost:7070/api/top-sales',
+        true);
 
     error && console.log(error);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { execute() }, []);
 
     return (
         <>

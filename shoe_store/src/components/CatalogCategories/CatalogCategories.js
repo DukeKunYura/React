@@ -1,34 +1,37 @@
-import React, { useEffect } from 'react';
-import useAsync from '../../hooks/useAsync';
+import React from 'react';
+import sendRequest from '../../functions/sendRequest';
+import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCheckedCategories } from '../../redux/masterSlice';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит меню категорий
  */
-export default function CatalogCategories(props) {
+export default function CatalogCategories() {
 
-    const { handlerCheckCategories, checked } = props;
+    const state = useSelector((state) => state.master);
 
-    const { execute, status, value, error } = useAsync(
-        () => fetch('http://localhost:7070/api/categories')
-            .then((res) => res.json()), false);
+    const dispatch = useDispatch();
+
+    const { status, value, error } = useAsyncWithUrl(
+        sendRequest,
+        'http://localhost:7070/api/categories',
+        true);
 
     error && console.log(error);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { execute() }, []);
 
     return (
         <>
             {status === "success" &&
                 <ul className="catalog-categories nav justify-content-center" id='linkCategories'>
                     <li className="nav-item">
-                        <a className={checked === "" ? "nav-link active" : "nav-link"} href="#linkCategories"
-                            onClick={() => { handlerCheckCategories("") }}>Все</a>
+                        <a className={state.checkedCategories === "" ? "nav-link active" : "nav-link"} href="#linkCategories"
+                            onClick={() => { dispatch(setCheckedCategories("")) }}>Все</a>
                     </li>
                     {value.map(value =>
                         <li className="nav-item" key={value.id}>
-                            <a className={checked === value.id ? 'nav-link active' : "nav-link"} href="#linkCategories"
-                                onClick={() => { handlerCheckCategories(value.id) }}>{value.title}</a>
+                            <a className={state.checkedCategories === value.id ? 'nav-link active' : "nav-link"} href="#linkCategories"
+                                onClick={() => { dispatch(setCheckedCategories(value.id)) }}>{value.title}</a>
                         </li>
                     )}
                 </ul>

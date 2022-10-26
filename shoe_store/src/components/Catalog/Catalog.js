@@ -1,8 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import useAsync from '../../hooks/useAsync';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
+import sendRequest from '../../functions/sendRequest';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
 import DownloadMore from '../DownloadMore/DownloadMore';
-import { useSelector } from 'react-redux';
+
+/**
+ * исправил орфографию (спел чекер)
+ * стили не трогал почитал про css модули 
+ * перенес логику мутирования url в слайс (при переходе нет лишнего запроса)
+ * добавил в useAsync аргумент url
+ * убрал лишние useEffect (использовал встроенные в useAsync)
+ * при размонтировании страницы каталога поиск очищается
+ * 
+ */
 
 /**
  * Компонент отправляет fetch-запрос и рендерит каталог
@@ -11,52 +22,20 @@ export default function Catalog(props) {
 
     const state = useSelector((state) => state.master);
 
-    const [checked, setChecked] = useState("");
-
-    const [categoriesUrl, setCategoriesUrl] = useState('http://localhost:7070/api/items1');
-
-    const handlerCheckCategories = (id) => {
-        if (id !== "") {
-            if (state.search !== "") {
-                setCategoriesUrl('http://localhost:7070/api/items?categoryId=' + id + '&q=' + state.search);
-                setChecked(id);
-            } else {
-                setCategoriesUrl('http://localhost:7070/api/items?categoryId=' + id);
-                setChecked(id);
-            }
-        } else {
-            if (state.search !== "") {
-                setCategoriesUrl('http://localhost:7070/api/items?q=' + state.search);
-                setChecked("");
-
-            } else {
-                setCategoriesUrl('http://localhost:7070/api/items');
-                setChecked("");
-            }
-        }
-    };
-
-    const { execute, status, value, error } = useAsync(
-        () => fetch(categoriesUrl)
-            .then((res) => res.json()), false);
+    const { status, value, error } = useAsyncWithUrl(
+        sendRequest,
+        state.url,
+        true);
 
     error && console.log(error);
 
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { handlerCheckCategories(checked) }, []);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { execute() }, [categoriesUrl, checked]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { handlerCheckCategories(checked) }, [state.searchStart]);
-
     return (
         <>
-            {status === "success"
-                ? <section className="catalog">
+            {status === "success" &&
+                <section className="catalog">
                     <h2 className="text-center">Каталог</h2>
                     {props.children}
-                    <CatalogCategories checked={checked} handlerCheckCategories={handlerCheckCategories} />
+                    <CatalogCategories />
                     <div className="row">
                         {value.map(value =>
                             <div className="col-4" key={value.id}>
@@ -71,22 +50,18 @@ export default function Catalog(props) {
                                 </div>
                             </div>)}
                     </div>
-                    <DownloadMore checked={checked} categoriesUrl={categoriesUrl} />
-                </section>
-
-                :
-                status === "pending"
-                    ?
-                    <section className="top-sales">
-                        <h2 className="text-center">Каталог</h2>
-                        <div className="preloader">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </section>
-                    : null}
+                    <DownloadMore checked={state.checkedCategories} categoriesUrl={state.url} />
+                </section>}
+            {status === "pending" &&
+                <section className="top-sales">
+                    <h2 className="text-center">Каталог</h2>
+                    <div className="preloader">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </section>}
 
         </>
 
