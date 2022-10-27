@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
-import sendRequest from '../../functions/sendRequest';
+import sendRequest from '../../api/sendRequest';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
 import DownloadMore from '../DownloadMore/DownloadMore';
+import Preloader from '../Preloader/Preloader';
 
 /**
  * исправил орфографию (спел чекер)
@@ -12,7 +13,8 @@ import DownloadMore from '../DownloadMore/DownloadMore';
  * добавил в useAsync аргумент url
  * убрал лишние useEffect (использовал встроенные в useAsync)
  * при размонтировании страницы каталога поиск очищается
- * 
+ * переформатировал ретерн с вложенными тернарными операторами
+ * добавил папки api и pages
  */
 
 /**
@@ -53,15 +55,7 @@ export default function Catalog(props) {
                     <DownloadMore checked={state.checkedCategories} categoriesUrl={state.url} />
                 </section>}
             {status === "pending" &&
-                <section className="top-sales">
-                    <h2 className="text-center">Каталог</h2>
-                    <div className="preloader">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </section>}
+                <Preloader title="Каталог" />}
 
         </>
 
