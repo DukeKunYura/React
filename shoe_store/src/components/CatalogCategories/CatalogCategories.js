@@ -1,5 +1,5 @@
 import React from 'react';
-import sendRequest from '../../functions/sendRequest';
+import sendRequest from '../../api/sendRequest';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCheckedCategories } from '../../redux/masterSlice';

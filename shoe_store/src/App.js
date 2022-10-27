@@ -1,9 +1,9 @@
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { Routes, Route } from 'react-router-dom';
-import MainPage from './components/MainPage/MainPage';
-import CatalogPage from './components/CatalogPage/CatalogPage';
-import AboutPage from './components/AboutPage/AboutPage';
+import MainPage from './components/Pages/MainPage/MainPage';
+import CatalogPage from './components/Pages/CatalogPage/CatalogPage';
+import AboutPage from './components/Pages/AboutPage/AboutPage';
 import ContactsPage from './components/ContactsPage/ContactsPage';
 import NotFound from './components/NotFound/NotFound';
 

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearch, setCheckedCategories } from '../../redux/masterSlice';
-import Banner from '../Banner/Banner';
-import Catalog from '../Catalog/Catalog';
-import Search from '../Search/Search';
+import { setSearch, setCheckedCategories } from '../../../redux/masterSlice';
+import Banner from '../../Banner/Banner';
+import Catalog from '../../Catalog/Catalog';
+import Search from '../../Search/Search';
 /**
  * Компонент рендерит страницу "Каталог"
  */

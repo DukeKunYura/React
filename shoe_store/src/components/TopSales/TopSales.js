@@ -1,6 +1,7 @@
 import React from 'react';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
-import sendRequest from '../../functions/sendRequest';
+import sendRequest from '../../api/sendRequest';
+import Preloader from '../Preloader/Preloader';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит "Хиты продаж"
@@ -38,15 +39,7 @@ export default function TopSales() {
                 :
                 status === "pending"
                     ?
-                    <section className="top-sales">
-                        <h2 className="text-center">Хиты продаж!</h2>
-                        <div className="preloader">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </section>
+                    <Preloader title="Хиты продаж!" />
                     : null}
 
         </>

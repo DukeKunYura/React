@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
-import sendRequest from '../../functions/sendRequest';
+import sendRequest from '../../api/sendRequest';
+import Preloader from '../Preloader/Preloader';
 
 /**
  * Компонент отправляет fetch-запрос при нажатии кнопки 
@@ -32,6 +33,12 @@ export default function DownloadMore(props) {
         setIsActiveAdder(false)
     };
 
+    const buttonMore =
+        <div className="text-center">
+            <button className="btn btn-outline-primary"
+                onClick={handlerDownload}>Загрузить ещё</button>
+        </div>;
+
     useEffect(() => {
         if (value) {
             let newArr = addedCards.concat(value);
@@ -44,57 +51,33 @@ export default function DownloadMore(props) {
 
     return (
         <>
-            {status === "pending" ?
-                <section className="top-sales">
-                    <h2 className="text-center">Каталог</h2>
-                    <div className="preloader">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </section>
-                :
+            {status === "pending" && <Preloader />}
+            {status !== "pending" &&
+
+                addedCards.length > 0
+                ?
                 <>
-                    {addedCards.length > 0
-                        ?
-                        <>
-                            <div className="row">
-                                {addedCards.map(value =>
-                                    <div className="col-4" key={value.id}>
-                                        <div className="card catalog-item-card">
-                                            <img src={value.images[0]}
-                                                className="card-img-top img-fluid" alt={value.title} />
-                                            <div className="card-body">
-                                                <p className="card-text">{value.title}</p>
-                                                <p className="card-text">{value.price}</p>
-                                                <a href="/products/1.html"
-                                                    className="btn btn-outline-primary">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>)}
-                            </div>
-                            {value === null || value.length < 6
-                                ?
-                                null
-                                :
-                                <div className="text-center">
-                                    <button className="btn btn-outline-primary"
-                                        onClick={handlerDownload}>Загрузить ещё</button>
+                    <div className="row">
+                        {addedCards.map(value =>
+                            <div className="col-4" key={value.id}>
+                                <div className="card catalog-item-card">
+                                    <img src={value.images[0]}
+                                        className="card-img-top img-fluid" alt={value.title} />
+                                    <div className="card-body">
+                                        <p className="card-text">{value.title}</p>
+                                        <p className="card-text">{value.price}</p>
+                                        <a href="/products/1.html"
+                                            className="btn btn-outline-primary">Заказать</a>
+                                    </div>
                                 </div>
-                            }
-                        </>
-                        :
-                        isActiveAdder
-                            ?
-                            <div className="text-center">
-                                <button className="btn btn-outline-primary"
-                                    onClick={handlerDownload}>Загрузить ещё</button>
-                            </div>
-                            :
-                            null
-                    }
-                </>}
+                            </div>)}
+                    </div>
+                    {!(value === null || value.length < 6) && buttonMore}
+                </>
+                :
+                isActiveAdder && buttonMore
+            }
+
         </>
     )
-}
+};

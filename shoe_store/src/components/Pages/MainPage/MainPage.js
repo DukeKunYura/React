@@ -1,7 +1,7 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
-import TopSales from '../TopSales/TopSales';
-import Catalog from '../Catalog/Catalog';
+import Banner from '../../Banner/Banner';
+import TopSales from '../../TopSales/TopSales';
+import Catalog from '../../Catalog/Catalog';
 
 
 /**
