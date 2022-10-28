@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
 import sendRequest from '../../api/sendRequest';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
@@ -15,6 +16,7 @@ import Preloader from '../Preloader/Preloader';
  * при размонтировании страницы каталога поиск очищается
  * переформатировал ретерн с вложенными тернарными операторами
  * добавил папки api и pages
+ * страница продукта
  */
 
 /**
@@ -30,6 +32,10 @@ export default function Catalog(props) {
         true);
 
     error && console.log(error);
+
+    const navigate = useNavigate();
+
+    const handlerClickOrder = (id) => { navigate(`/catalog/${id}`) };
 
     return (
         <>
@@ -47,7 +53,10 @@ export default function Catalog(props) {
                                     <div className="card-body">
                                         <p className="card-text">{value.title}</p>
                                         <p className="card-text">{value.price}</p>
-                                        <a href="/products/1.html" className="btn btn-outline-primary">Заказать</a>
+                                        <a href="/products/1.html" className="btn btn-outline-primary"
+                                            onClick={(e) => { e.preventDefault(); handlerClickOrder(value.id) }}>
+                                            Заказать
+                                        </a>
                                     </div>
                                 </div>
                             </div>)}

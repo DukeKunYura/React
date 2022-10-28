@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
+import Banner from '../../Banner/Banner';
 
 /**
  * Компонент рендерит страницу "Контакты"

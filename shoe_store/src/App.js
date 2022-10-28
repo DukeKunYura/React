@@ -4,8 +4,9 @@ import { Routes, Route } from 'react-router-dom';
 import MainPage from './components/Pages/MainPage/MainPage';
 import CatalogPage from './components/Pages/CatalogPage/CatalogPage';
 import AboutPage from './components/Pages/AboutPage/AboutPage';
-import ContactsPage from './components/ContactsPage/ContactsPage';
-import NotFound from './components/NotFound/NotFound';
+import ContactsPage from './components/Pages/ContactsPage/ContactsPage';
+import NotFound from './components/Pages/NotFound/NotFound';
+import ProductPage from './components/Pages/ProductPage/ProductPage';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         <Route path="/catalog.html" element={<CatalogPage />} />
         <Route path="/about.html" element={<AboutPage />} />
         <Route path="/contacts.html" element={<ContactsPage />} />
+        <Route path="/catalog/:id" element={<ProductPage />} />
         <Route path="*" element={<NotFound />} />
+
       </Routes>
       <Footer />
     </>
