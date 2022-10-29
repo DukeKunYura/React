@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
 import sendRequest from '../../api/sendRequest';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
 import DownloadMore from '../DownloadMore/DownloadMore';
 import Preloader from '../Preloader/Preloader';
+import OrderButton from '../OrderButton/OrderButton';
 
 /**
  * исправил орфографию (спел чекер)
@@ -17,6 +17,7 @@ import Preloader from '../Preloader/Preloader';
  * переформатировал ретерн с вложенными тернарными операторами
  * добавил папки api и pages
  * страница продукта
+ * кнопка заказать перенесена в компонент
  */
 
 /**
@@ -32,10 +33,6 @@ export default function Catalog(props) {
         true);
 
     error && console.log(error);
-
-    const navigate = useNavigate();
-
-    const handlerClickOrder = (id) => { navigate(`/catalog/${id}`) };
 
     return (
         <>
@@ -53,18 +50,14 @@ export default function Catalog(props) {
                                     <div className="card-body">
                                         <p className="card-text">{value.title}</p>
                                         <p className="card-text">{value.price}</p>
-                                        <a href="/products/1.html" className="btn btn-outline-primary"
-                                            onClick={(e) => { e.preventDefault(); handlerClickOrder(value.id) }}>
-                                            Заказать
-                                        </a>
+                                        <OrderButton id={value.id} />
                                     </div>
                                 </div>
                             </div>)}
                     </div>
                     <DownloadMore checked={state.checkedCategories} categoriesUrl={state.url} />
                 </section>}
-            {status === "pending" &&
-                <Preloader title="Каталог" />}
+            {status === "pending" && <Preloader title="Каталог" />}
 
         </>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
 import sendRequest from '../../api/sendRequest';
 import Preloader from '../Preloader/Preloader';
-import { useNavigate } from 'react-router-dom';
+import OrderButton from '../OrderButton/OrderButton';
 
 /**
  * Компонент отправляет fetch-запрос и рендерит "Хиты продаж"
@@ -15,10 +15,6 @@ export default function TopSales() {
         true);
 
     error && console.log(error);
-
-    const navigate = useNavigate();
-
-    const handlerClickOrder = (id) => { navigate(`/catalog/${id}`) };
 
     return (
         <>
@@ -34,9 +30,7 @@ export default function TopSales() {
                                     <div className="card-body">
                                         <p className="card-text">{value.title}</p>
                                         <p className="card-text">{value.price}</p>
-                                        <a href="/products/1.html" className="btn btn-outline-primary"
-                                            onClick={(e) => { e.preventDefault(); handlerClickOrder(value.id) }}
-                                        >Заказать</a>
+                                        <OrderButton id={value.id} />
                                     </div>
                                 </div>
                             </div>

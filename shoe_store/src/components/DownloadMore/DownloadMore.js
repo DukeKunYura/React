@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import useAsyncWithUrl from '../../hooks/useAsyncWithUrl';
 import sendRequest from '../../api/sendRequest';
 import Preloader from '../Preloader/Preloader';
+import OrderButton from '../OrderButton/OrderButton';
 
 /**
  * Компонент отправляет fetch-запрос при нажатии кнопки 
@@ -28,10 +28,6 @@ export default function DownloadMore(props) {
         false);
 
     error && console.log(error);
-
-    const navigate = useNavigate();
-
-    const handlerClickOrder = (id) => { navigate(`/catalog/${id}`) };
 
     const handlerDownload = () => {
         execute();
@@ -71,11 +67,7 @@ export default function DownloadMore(props) {
                                     <div className="card-body">
                                         <p className="card-text">{value.title}</p>
                                         <p className="card-text">{value.price}</p>
-                                        <a href="/products/1.html"
-                                            className="btn btn-outline-primary"
-                                            onClick={(e) => { e.preventDefault(); handlerClickOrder(value.id) }}>
-                                            Заказать
-                                        </a>
+                                        <OrderButton id={value.id} />
                                     </div>
                                 </div>
                             </div>)}

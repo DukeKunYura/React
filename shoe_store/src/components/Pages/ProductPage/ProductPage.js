@@ -3,8 +3,11 @@ import useAsyncWithUrl from '../../../hooks/useAsyncWithUrl';
 import sendRequest from '../../../api/sendRequest'
 import { useParams } from 'react-router-dom';
 import Preloader from '../../Preloader/Preloader';
+import ChoiceSection from '../../ChoiceSection/ChoiceSection';
 
-
+/**
+ * Компонент отвечает за страницу товара
+ */
 export default function ProductPage() {
 
     const params = useParams();
@@ -59,19 +62,7 @@ export default function ProductPage() {
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div className="text-center">
-                                        <p>Размеры в наличии:
-                                            {value.sizes.map(size => <span className="catalog-item-size">{size.size}</span>)}
-                                            {/* <span className="catalog-item-size selected">18 US</span> <span className="catalog-item-size">20 US</span> */}
-                                        </p>
-                                        <p>Количество: <span className="btn-group btn-group-sm pl-2">
-                                            <button className="btn btn-secondary">-</button>
-                                            <span className="btn btn-outline-primary">1</span>
-                                            <button className="btn btn-secondary">+</button>
-                                        </span>
-                                        </p>
-                                    </div>
-                                    <button className="btn btn-danger btn-block btn-lg">В корзину</button>
+                                    <ChoiceSection item={value} />
                                 </div>
                             </div>
                         </section>
