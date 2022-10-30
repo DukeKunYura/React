@@ -27,38 +27,38 @@ export default function ProductPage() {
                 <main class="container">
                     <div class="row">
                         <section className="catalog-item">
-                            <h2 className="text-center">{value.title}</h2>
+                            <h2 className="text-center">{value.title && value.title}</h2>
                             <div className="row">
                                 <div className="col-5">
-                                    <img src={value.images[0]}
-                                        className="img-fluid" alt={value.title} />
+                                    <img src={value.images[0] && value.images[0]}
+                                        className="img-fluid" alt={value.title && value.title} />
                                 </div>
                                 <div className="col-7">
                                     <table className="table table-bordered">
                                         <tbody>
                                             <tr>
                                                 <td>Артикул</td>
-                                                <td>{value.sku}</td>
+                                                <td>{value.sku && value.sku}</td>
                                             </tr>
                                             <tr>
                                                 <td>Производитель</td>
-                                                <td>{value.manufacturer}</td>
+                                                <td>{value.manufacturer && value.manufacturer}</td>
                                             </tr>
                                             <tr>
                                                 <td>Цвет</td>
-                                                <td>{value.color}</td>
+                                                <td>{value.color && value.color}</td>
                                             </tr>
                                             <tr>
                                                 <td>Материалы</td>
-                                                <td>{value.material}</td>
+                                                <td>{value.material && value.material}</td>
                                             </tr>
                                             <tr>
                                                 <td>Сезон</td>
-                                                <td>{value.season}</td>
+                                                <td>{value.season && value.season}</td>
                                             </tr>
                                             <tr>
                                                 <td>Повод</td>
-                                                <td>{value.reason}</td>
+                                                <td>{value.reason && value.reason}</td>
                                             </tr>
                                         </tbody>
                                     </table>
