@@ -24,8 +24,8 @@ export default function ProductPage() {
         <>
             {status === "pending" && <Preloader />}
             {status === "success" &&
-                <main class="container">
-                    <div class="row">
+                <main className="container">
+                    <div className="row">
                         <section className="catalog-item">
                             <h2 className="text-center">{value.title && value.title}</h2>
                             <div className="row">
