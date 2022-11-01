@@ -1,28 +1,32 @@
+import React, { Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import { Routes, Route } from 'react-router-dom';
 import MainPage from './components/Pages/MainPage/MainPage';
-import CatalogPage from './components/Pages/CatalogPage/CatalogPage';
-import AboutPage from './components/Pages/AboutPage/AboutPage';
-import ContactsPage from './components/Pages/ContactsPage/ContactsPage';
-import NotFound from './components/Pages/NotFound/NotFound';
-import ProductPage from './components/Pages/ProductPage/ProductPage';
-import PushcartPage from './components/Pages/PushcartPage/PushcartPage';
+import Preloader from './components/Preloader/Preloader';
+const CatalogPage = React.lazy(() => import('./components/Pages/CatalogPage/CatalogPage'));
+const AboutPage = React.lazy(() => import('./components/Pages/AboutPage/AboutPage'));
+const ContactsPage = React.lazy(() => import('./components/Pages/ContactsPage/ContactsPage'));
+const NotFound = React.lazy(() => import('./components/Pages/NotFound/NotFound'));
+const ProductPage = React.lazy(() => import('./components/Pages/ProductPage/ProductPage'));
+const PushcartPage = React.lazy(() => import('./components/Pages/PushcartPage/PushcartPage'));
+
 
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/catalog.html" element={<CatalogPage />} />
-        <Route path="/about.html" element={<AboutPage />} />
-        <Route path="/contacts.html" element={<ContactsPage />} />
-        <Route path="/cart.html" element={<PushcartPage />} />
-        <Route path="/catalog/:id" element={<ProductPage />} />
-        <Route path="*" element={<NotFound />} />
-
-      </Routes>
+      <Suspense fallback={<Preloader />}>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/catalog.html" element={<CatalogPage />} />
+          <Route path="/about.html" element={<AboutPage />} />
+          <Route path="/contacts.html" element={<ContactsPage />} />
+          <Route path="/cart.html" element={<PushcartPage />} />
+          <Route path="/catalog/:id" element={<ProductPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </>
   );

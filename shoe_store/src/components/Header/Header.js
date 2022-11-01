@@ -52,9 +52,10 @@ export default function Header() {
                                 <div className="header-controls-pics">
                                     <div data-id="search-expander" className="header-controls-pic header-controls-search"
                                         onClick={(e) => { handlerClickSearch(e) }}></div>
-                                    {/* <!-- Do programmatic navigation on click to /cart.html --> */}
-                                    <div className="header-controls-pic header-controls-cart">
-                                        <div className="header-controls-cart-full">1</div>
+                                    <div className="header-controls-pic header-controls-cart"
+                                        onClick={() => { navigate("/cart.html") }}>
+                                        <div className={state.cart.length > 0 ? "header-controls-cart-full" : "header-controls-cart"}>
+                                            {state.cart.length > 0 && state.cart.length}</div>
                                         <div className="header-controls-cart-menu"></div>
                                     </div>
                                 </div>
